@@ -6,6 +6,7 @@ import Banner from "../components/Banner";
 import requests from "../utils/requests";
 import { Movie } from "../typings";
 import Row from "../components/Row";
+import useAuth from "../hooks/useAuth";
 
 interface Props {
 	netflixOriginals: Movie[];
@@ -28,6 +29,10 @@ export default function Home({
 	topRated,
 	trendingNow,
 }: Props) {
+	const { logout, loading } = useAuth();
+
+	if (loading) return null;
+
 	return (
 		<>
 			<Head>
